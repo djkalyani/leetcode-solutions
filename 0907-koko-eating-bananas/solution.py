@@ -1,6 +1,9 @@
 class Solution:
     # optimal - Binary Search
     # total hrs reqd to eat all in the given speed 'hourly'
+
+
+
     def calculateHours(self,piles,hourly):
         total_hrs=0
         for pile in piles:  
@@ -19,29 +22,6 @@ class Solution:
                 high=mid-1
             else:
                 low=mid+1
-        return hours
+        return low
 
-            
-
-    
-
-
-    ''' brute
-    def calculateHours(self,piles,hourly):
-        total_hrs=0
-        for pile in piles:  
-            total_hrs += ceil(pile/hourly)
-        return total_hrs
-
-    def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        n = len(piles)
-        maxBanana = max(piles)
-
-        for i in range(1,maxBanana+1):
-            minHours = self.calculateHours(piles,i)
-            if minHours<=h:
-                return i
-            
-        return maxBanana
-    '''
 
