@@ -1,29 +1,16 @@
 class Solution:
+    def diff(self,freq):
+        maxVal = max(freq.values())
+        minVal = min(freq.values())
+        return maxVal-minVal
     def beautySum(self, s: str) -> int:
-        '''
-        n = len(s)
-
-        char_count = Counter(s)
-        frequency = []
-        for c in char_count.values():
-            frequency.append(c)
-        
-        print(frequency)
-        return (max(frequency)-min(frequency))
-        
-        '''
-
-        n = len(s)
         total=0
-        for i in range(n):
-            freq = {}
-            for j in range(i,n):
+        freq = {}
+        for i in range(len(s)-1):
+            for j in range(i,len(s)):
                 freq[s[j]]=freq.get(s[j],0)+1
-
-                values = freq.values()
-                maxVal = max(values)
-                minVal = min(values)
-
-                total+= maxVal-minVal
-            
+                if len(freq)>=2:
+                    total+=self.diff(freq)
+            freq.clear() # freq only for a one substring
         return total
+
