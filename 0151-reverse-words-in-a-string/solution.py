@@ -9,5 +9,7 @@ class Solution:
         s2 = " ".join(s1)
         return s2
         '''
+        print(s.split())
+        print(s.split()[::-1])
         return ' '.join(s.split()[::-1])
 
