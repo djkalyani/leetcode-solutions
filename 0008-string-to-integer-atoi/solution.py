@@ -1,6 +1,34 @@
 class Solution:
     def myAtoi(self, s: str) -> int:
 
+        s = s.lstrip()
+        if not s:
+            return 0
+        sign,i = 1,0
+        if s[0]=='-':
+            sign = -1
+            i+=1
+        elif s[0]=='+':
+            i+=1
+        
+        INT_MAX = 2**31-1
+        INT_MIN = -2**31
+        
+        def recurse(i,num):
+            if i>=len(s) or not s[i].isdigit():
+                return num
+            digit = int(s[i])
+            if num > (INT_MAX-digit)//10:
+                return INT_MAX+1 if sign == -1 else INT_MAX
+            
+            return recurse(i+1,num*10+digit)
+
+        result = recurse(i,0)
+        result = sign*result
+
+        return max(INT_MIN,min(result,INT_MAX))
+
+        '''
         s = s.lstrip()  # remove leading spaces only
         if not s:
             return 0
@@ -21,7 +49,7 @@ class Solution:
         
         return sign*num
 
-
+        '''
 
         '''
         s = s.replace(" ","") # removing spaces
