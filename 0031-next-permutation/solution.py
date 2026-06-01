@@ -3,7 +3,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        ind = -1
+        '''ind = -1
         for i in range(len(nums)-2,-1,-1):
             if nums[i]<nums[i+1]:
                 ind = i
@@ -15,4 +15,16 @@ class Solution:
         while nums[i]<=nums[ind]:
             i-=1
         nums[i], nums[ind] = nums[ind], nums[i]
-        nums[ind+1:] = reversed(nums[ind+1:])
+        nums[ind+1:] = reversed(nums[ind+1:])'''
+        i = len(nums)-2
+        while i>=0 and nums[i]>=nums[i+1]:
+            i-=1
+        if i==-1:
+            nums.reverse()
+            return
+        else:
+            j = len(nums)-1
+            while nums[j]<=nums[i]:
+                j-=1
+            nums[i],nums[j] = nums[j],nums[i]
+            nums[i+1:] = nums[i+1:][::-1]
