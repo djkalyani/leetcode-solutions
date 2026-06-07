@@ -9,3 +9,4 @@ class Solution:
                 if substr == substr[::-1]:
                     longest = substr if len(longest)<len(substr) else longest
         return longest
+        
